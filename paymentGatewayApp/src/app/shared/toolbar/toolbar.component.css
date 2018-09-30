@@ -1,0 +1,9 @@
+mat-toolbar {
+    max-height: 64px;
+    min-height: 64px;
+}
+
+img {
+    width: 45px;
+    margin-right: 10px;
+}

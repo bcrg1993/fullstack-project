@@ -1,0 +1,18 @@
+.example-container {
+    position: absolute;
+    top: 64px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+  }
+
+.mat-drawer {
+  background-color: #f1f1f1;
+  width: 18%;
+}
+
+mat-nav-list a {
+  font-size: 14px;
+  font-weight: 700;
+}

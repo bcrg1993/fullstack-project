@@ -1,0 +1,23 @@
+<mat-card id="form-receta-card">
+  <mat-card-title>Inicio de sesión</mat-card-title>
+  <form action="">
+    <div class="form-input-100">
+      <mat-form-field appearance="legacy">
+        <mat-label>Usuario</mat-label>
+        <input type="text" matInput name="username" formControlName="username">
+        <mat-icon matSuffix class="mat-icon">account_circle</mat-icon>
+      </mat-form-field>
+    </div>
+    <div class="form-input-100">
+      <mat-form-field appearance="legacy">
+        <mat-label>Contraseña</mat-label>
+        <input [type]="inputPasswordType" matInput name="password" formControlName="password">
+        <mat-icon matSuffix class="element-cursor-hand" (click)="changeInputPasswordType()" *ngIf="inputPasswordShow">visibility</mat-icon>
+        <mat-icon matSuffix class="element-cursor-hand" (click)="changeInputPasswordType()" *ngIf="!inputPasswordShow">visibility_off</mat-icon>
+      </mat-form-field>
+    </div>
+    <div class="form-button-100">
+      <button type="button" mat-button mat-raised-button color="primary" (click)="login()">Ingresar</button>
+    </div>
+  </form>
+</mat-card>
