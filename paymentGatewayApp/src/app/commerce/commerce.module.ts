@@ -5,6 +5,7 @@ import { CommerceRoutingModule } from './commerce-routing.module';
 import { MaterialModule } from './../material/material.module';
 
 import { ListCommerceComponent } from './list-commerce/list-commerce.component';
+import { NewCommerceComponent } from './new-commerce/new-commerce.component';
 
 @NgModule({
   imports: [
@@ -12,6 +13,6 @@ import { ListCommerceComponent } from './list-commerce/list-commerce.component';
     CommerceRoutingModule,
     MaterialModule
   ],
-  declarations: [ListCommerceComponent]
+  declarations: [ListCommerceComponent, NewCommerceComponent]
 })
 export class CommerceModule { }

@@ -1,9 +1,5 @@
-mat-toolbar {
-    font-family: 'mukta-malar-regular', sans-serif;
-}
-
 mat-toolbar img {
-    width: 45px;
+    width: 40px;
     height: auto;
     margin-right: 10px;
 }
@@ -37,7 +33,7 @@ mat-nav-list a {
     font-weight: 700;
 }
 .module-content {
-    padding: 0px 20px;
+    padding: 30px;
 }
 
 .active {

@@ -5,6 +5,10 @@
   font-family: 'mukta-malar-regular', sans-serif;
 }
 
+.default-font-component {
+    font-family: 'mukta-malar-regular', sans-serif;
+}
+
 body {
   margin: 0;
   background-color: #fff;
