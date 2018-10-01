@@ -1,0 +1,32 @@
+<div>
+    <mat-toolbar color="primary">
+        <img src="/src/assets/img/payment-gateway.png" alt="">
+        <span>Pasarela de Pagos</span>
+        <span class="toolbar-spacer"></span>
+        <button mat-button [matMenuTriggerFor]="menu">Usuario</button>
+        <mat-menu #menu="matMenu" class="user-menu-options">
+            <button mat-menu-item>Perfil</button>
+            <button mat-menu-item>Cerrar sesión</button>
+        </mat-menu>
+    </mat-toolbar>
+</div>
+<mat-sidenav-container class="vertical-menu-container">
+    <mat-sidenav mode="side" opened role="navigation">
+        <mat-nav-list>
+            <a mat-list-item routerLink="/commerce" routerLinkActive="active">
+                <mat-icon>store</mat-icon>&nbsp;&nbsp;Comercios
+            </a>
+            <a mat-list-item routerLink="/brand" routerLinkActive="active">
+                <mat-icon>credit_card</mat-icon>&nbsp;&nbsp;Marcas
+            </a>
+            <a mat-list-item routerLink="/transaction" routerLinkActive="active">
+                <mat-icon>list</mat-icon>&nbsp;&nbsp;Transacciones
+            </a>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div class="module-content">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

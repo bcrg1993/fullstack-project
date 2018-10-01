@@ -2,28 +2,22 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from './material/material.module';
 import { AppRoutingModule } from './app-routing.module';
-import { PrivateModule } from './private/private.module';
+import { MaterialModule } from './material/material.module';
 
 import { AppComponent } from './app.component';
-import { ToolbarComponent } from './shared/toolbar/toolbar.component';
-import { MenuComponent } from './shared/menu/menu.component';
-import { LoginComponent } from './shared/login/login.component';
+import { AdminLayoutComponent } from './layout/admin-layout/admin-layout.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ToolbarComponent,
-    MenuComponent,
-    LoginComponent
+    AdminLayoutComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MaterialModule,
-    PrivateModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]

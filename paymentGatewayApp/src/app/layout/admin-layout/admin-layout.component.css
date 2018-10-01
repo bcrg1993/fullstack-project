@@ -1,0 +1,45 @@
+mat-toolbar {
+    font-family: 'mukta-malar-regular', sans-serif;
+}
+
+mat-toolbar img {
+    width: 45px;
+    height: auto;
+    margin-right: 10px;
+}
+  
+.toolbar-spacer {
+    flex: 1 1 auto;
+}
+
+.mat-menu-item {
+    font-size: 14px;
+    font-weight: 700;
+    font-family: 'mukta-malar-regular', sans-serif;
+}
+
+.vertical-menu-container {
+    position: absolute;
+    top: 64px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+}
+
+.mat-drawer {
+    background-color: #f1f1f1;
+    width: 18%;
+}
+
+mat-nav-list a {
+    font-size: 14px;
+    font-weight: 700;
+}
+.module-content {
+    padding: 0px 20px;
+}
+
+.active {
+    color: #3F51B5;
+}

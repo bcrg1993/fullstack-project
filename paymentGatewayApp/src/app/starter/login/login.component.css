@@ -1,0 +1,23 @@
+mat-toolbar img {
+    width: 45px;
+    height: auto;
+    margin-right: 10px;
+}
+
+mat-card {
+    width: 350px;
+    margin: 40px auto;
+}
+
+.form-input-100 .mat-form-field {
+    width: 100%;
+}
+
+.form-button-100 button {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.element-cursor-hand {
+    cursor: pointer;
+}

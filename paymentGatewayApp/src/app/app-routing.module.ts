@@ -1,23 +1,18 @@
 import { ModuleWithProviders } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { LoginComponent } from './shared/login/login.component';
-import { HomeComponent } from './private/home/home.component';
-import { ListCommerceComponent } from './private/commerce/list-commerce/list-commerce.component';
+import { AdminLayoutComponent } from './layout/admin-layout/admin-layout.component';
 
-const appRoutes: Routes = [
-  {
-    path: '',
-    component: LoginComponent
-  },
-  {
-    path: 'home',
-    component: HomeComponent
-  },
-  {
-    path: 'commerces',
-    loadChildren: './private/private.module.ts#CommerceModule'
-  }
+const routes: Routes = [
+    { path: '', loadChildren: './starter/starter.module#StarterModule' },
+    {
+        path: '', component: AdminLayoutComponent, children: [
+            { path: 'home', loadChildren: './home/home.module#HomeModule' },
+            { path: 'commerce', loadChildren: './commerce/commerce.module#CommerceModule' },
+            { path: 'brand', loadChildren: './brand/brand.module#BrandModule' },
+            { path: 'transaction', loadChildren: './transaction/transaction.module#TransactionModule' }
+        ]
+    }
 ];
 
-export const AppRoutingModule: ModuleWithProviders = RouterModule.forRoot(appRoutes);
+export const AppRoutingModule: ModuleWithProviders = RouterModule.forRoot(routes);
