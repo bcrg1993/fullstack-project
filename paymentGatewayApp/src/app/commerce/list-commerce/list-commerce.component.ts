@@ -5,7 +5,7 @@ import { CommerceService } from '../service/commerce.service';
 @Component({
     selector: 'app-list-commerce',
     templateUrl: './list-commerce.component.html',
-    styleUrls: ['./list-commerce.component.css']
+    styleUrls: ['./list-commerce.component.scss']
 })
 export class ListCommerceComponent implements OnInit {
 

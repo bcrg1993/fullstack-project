@@ -1,0 +1,21 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import '~@angular/material/theming';
+
+@font-face {
+  font-family: 'Roboto Condensed';
+  src: url(./assets/font/RobotoCondensed/RobotoCondensed-Regular.ttf);
+}
+
+$custom-typography: mat-typography-config(
+  $font-family: 'Roboto Condensed',
+  $headline: mat-typography-level(25px, 10px, 700),
+  $body-1: mat-typography-level(15px, 10px, 500)
+);
+
+@include angular-material-typography($custom-typography);
+
+body {
+  margin: 0;
+  background-color: #fff;
+}
