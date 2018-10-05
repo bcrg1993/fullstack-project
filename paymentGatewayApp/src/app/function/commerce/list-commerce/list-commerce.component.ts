@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ICommerce } from '../model/icommerce';
-import { CommerceService } from '../service/commerce.service';
+
+import { ICommerce } from 'src/app/shared/model/icommerce';
+import { CommerceService } from 'src/app/shared/service/commerce.service';
 
 @Component({
     selector: 'app-list-commerce',

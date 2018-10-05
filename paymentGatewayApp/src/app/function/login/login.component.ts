@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { ILogin } from './../model/ilogin';
-import { Constant } from './../constant/constant';
+import { ILogin } from 'src/app/shared/model/ilogin';
+import { LoginConstant } from 'src/app/shared/constant/loginconstant';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit() {
-    this.inputPasswordType = Constant.INPUT_PASSWORD_TYPE_PASS;
+    this.inputPasswordType = LoginConstant.INPUT_PASSWORD_TYPE_PASS;
     this.inputPasswordShow = false;
   }
 
@@ -27,11 +27,11 @@ export class LoginComponent implements OnInit {
   }
 
   changeInputPasswordType(): void {
-    if (this.inputPasswordType === Constant.INPUT_PASSWORD_TYPE_PASS) {
-      this.inputPasswordType = Constant.INPUT_PASSWORD_TYPE_TEXT;
+    if (this.inputPasswordType === LoginConstant.INPUT_PASSWORD_TYPE_PASS) {
+      this.inputPasswordType = LoginConstant.INPUT_PASSWORD_TYPE_TEXT;
       this.inputPasswordShow = true;
     } else {
-      this.inputPasswordType = Constant.INPUT_PASSWORD_TYPE_PASS;
+      this.inputPasswordType = LoginConstant.INPUT_PASSWORD_TYPE_PASS;
       this.inputPasswordShow = false;
     }
   }

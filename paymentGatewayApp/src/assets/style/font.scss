@@ -1,0 +1,16 @@
+@import '~@angular/material/theming';
+
+@font-face {
+  font-family: 'Mukta';
+  src: url(./assets/font/Mukta/Mukta-Regular.ttf);
+}
+
+$custom-typography: mat-typography-config(
+  $font-family: 'Mukta',
+  $headline: mat-typography-level(25px, 10px, 700),
+  $body-1: mat-typography-level(15px, 10px, 500)
+);
+
+@include mat-base-typography($custom-typography);
+@include mat-checkbox-typography($custom-typography);
+@include angular-material-typography($custom-typography);
