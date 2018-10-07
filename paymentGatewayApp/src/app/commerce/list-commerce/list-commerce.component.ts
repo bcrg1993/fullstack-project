@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ICommerce } from 'src/app/shared/model/icommerce';
-import { CommerceService } from 'src/app/shared/service/commerce.service';
+import { ICommerce } from '../../core/model/icommerce';
+import { CommerceService } from '../../core/service/commerce.service';
 
 @Component({
     selector: 'app-list-commerce',
@@ -13,7 +13,8 @@ export class ListCommerceComponent implements OnInit {
     displayedColumns: string[] = ['rowNumber', 'name', 'address', 'phone', 'actions'];
     dataSource: Array<ICommerce>;
 
-    constructor(private commerceService: CommerceService) { }
+    constructor(private commerceService: CommerceService) {
+    }
 
     ngOnInit() {
         this.getCommerces();

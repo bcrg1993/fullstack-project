@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ListTransactionComponent } from './list-transaction.component';
+import { ToolboxComponent } from './toolbox.component';
 
-describe('ListTransactionComponent', () => {
-  let component: ListTransactionComponent;
-  let fixture: ComponentFixture<ListTransactionComponent>;
+describe('ToolboxComponent', () => {
+  let component: ToolboxComponent;
+  let fixture: ComponentFixture<ToolboxComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ListTransactionComponent ]
+      declarations: [ ToolboxComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ListTransactionComponent);
+    fixture = TestBed.createComponent(ToolboxComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

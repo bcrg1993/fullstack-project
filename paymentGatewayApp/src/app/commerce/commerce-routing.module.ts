@@ -4,14 +4,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { ListCommerceComponent } from './list-commerce/list-commerce.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: ListCommerceComponent
-  }
+    {
+        path: '', component: ListCommerceComponent
+    }
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forChild(routes)],
+    exports: [RouterModule]
 })
 export class CommerceRoutingModule { }
