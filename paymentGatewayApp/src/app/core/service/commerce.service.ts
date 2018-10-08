@@ -22,6 +22,10 @@ export class CommerceService {
 
     getCommerces(): Observable<Array<ICommerce>> {
         return of(this.commerceList)
-            .pipe(delay(3000));
+            .pipe(delay(1000));
+    }
+
+    addCommerces(commerce: ICommerce): void {
+        this.commerceList.push(commerce);
     }
 }

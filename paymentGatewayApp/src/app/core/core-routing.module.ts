@@ -4,7 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminLayoutComponent } from '../shared/admin-layout/admin-layout.component';
 
 const routes: Routes = [
-    { path: '', loadChildren: '../login/login.module#LoginModule' },
+    { path: '', redirectTo: '/login', pathMatch: 'full' },
+    { path: 'login', loadChildren: '../login/login.module#LoginModule' },
     {
         path: '', component: AdminLayoutComponent, children: [
             { path: 'commerce', loadChildren: '../commerce/commerce.module#CommerceModule' },
@@ -14,7 +15,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes)],
+    imports: [RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload' })],
     exports: [RouterModule]
 })
 export class CoreRoutingModule {

@@ -1,0 +1,6 @@
+$app-primary: mat-palette($mat-orange, 800);
+$app-accent:  mat-palette($mat-brown, A400);
+$app-warn:    mat-palette($mat-red, A200);
+
+$app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
+@include angular-material-theme($app-theme);

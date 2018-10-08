@@ -1,5 +1,6 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { CommerceRoutingModule } from './commerce-routing.module';
 import { MaterialModule } from '../material/material.module';
@@ -11,14 +12,18 @@ import { NewCommerceComponent } from './new-commerce/new-commerce.component';
     imports: [
         CommonModule,
         CommerceRoutingModule,
-        MaterialModule
+        MaterialModule,
+        FormsModule,
+        ReactiveFormsModule
     ],
     declarations: [
         ListCommerceComponent,
         NewCommerceComponent
     ],
     exports: [
-        MaterialModule
+        MaterialModule,
+        FormsModule,
+        ReactiveFormsModule
     ],
     schemas: [
         CUSTOM_ELEMENTS_SCHEMA

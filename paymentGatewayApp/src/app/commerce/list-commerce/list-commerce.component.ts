@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { ICommerce } from '../../core/model/icommerce';
-import { CommerceService } from '../../core/service/commerce.service';
 
 @Component({
     selector: 'app-list-commerce',
@@ -13,7 +13,7 @@ export class ListCommerceComponent implements OnInit {
     displayedColumns: string[] = ['rowNumber', 'name', 'address', 'phone', 'actions'];
     dataSource: Array<ICommerce>;
 
-    constructor(private commerceService: CommerceService) {
+    constructor(private activatedRoute: ActivatedRoute, private router: Router) {
     }
 
     ngOnInit() {
@@ -21,14 +21,11 @@ export class ListCommerceComponent implements OnInit {
     }
 
     getCommerces(): void {
-        this.commerceService.getCommerces().subscribe(
-            (response: Array<ICommerce>) => {
-                this.dataSource = response;
-            },
-            (error: any) => {
-                console.log(error);
-            }
-        );
+        this.dataSource = this.activatedRoute.snapshot.data['commerces'];
+    }
+
+    goToAddCommerce(): void {
+        this.router.navigate(['/commerce', 'create']);
     }
 
 }

@@ -1,14 +1,12 @@
-<div>
-    <mat-toolbar color="primary">
-        <img src="/assets/img/payment-gateway.png" alt="">
-        <span>Pasarela de Pagos</span>
-        <h1 class="toolbar-spacer"></h1>
-        <button mat-button [matMenuTriggerFor]="menu">
-            <mat-icon>account_circle </mat-icon> Usuario
-        </button>
-        <mat-menu #menu="matMenu" class="user-menu-options">
-            <button mat-menu-item>Perfil</button>
-            <button mat-menu-item>Cerrar sesión</button>
-        </mat-menu>
-    </mat-toolbar>
-</div>
+<mat-toolbar color="primary">
+    <img src="/assets/img/payment-gateway.png" alt="">
+    <span>Pasarela de Pagos</span>
+    <h1 class="toolbar-spacer"></h1>
+    <button mat-button [matMenuTriggerFor]="menu">
+        <mat-icon>account_circle </mat-icon> Usuario
+    </button>
+    <mat-menu #menu="matMenu" class="user-menu-options">
+        <button mat-menu-item>Perfil</button>
+        <button mat-menu-item>Cerrar sesión</button>
+    </mat-menu>
+</mat-toolbar>

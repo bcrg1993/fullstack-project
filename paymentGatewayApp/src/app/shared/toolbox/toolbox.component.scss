@@ -1,7 +1,9 @@
-mat-toolbar img {
-    width: 40px;
-    height: auto;
-    margin-right: 10px;
+.mat-toolbar.mat-primary {
+    img {
+        width: 40px;
+        height: auto;
+        margin-right: 10px;
+    }
 }
   
 .toolbar-spacer {
