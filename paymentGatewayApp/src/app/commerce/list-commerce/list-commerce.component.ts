@@ -10,7 +10,7 @@ import { ICommerce } from '../../core/model/icommerce';
 })
 export class ListCommerceComponent implements OnInit {
 
-    displayedColumns: string[] = ['rowNumber', 'name', 'address', 'phone', 'actions'];
+    displayedColumns: string[] = ['index', 'name', 'address', 'phone', 'actions'];
     dataSource: Array<ICommerce>;
 
     constructor(private activatedRoute: ActivatedRoute, private router: Router) {

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, NavigationStart, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-toolbox',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ToolboxComponent implements OnInit {
 
-  constructor() { }
+  progressBarShow: boolean;
+
+  constructor(private router: Router) {
+    this.progressBarShow = false;
+  }
 
   ngOnInit() {
+    this.router.events.forEach((event) => {
+      if(event instanceof NavigationStart) {
+        this.progressBarShow = true;
+      }
+
+      if(event instanceof NavigationEnd) {
+        this.progressBarShow = false;
+      }
+    });
   }
 
 }
