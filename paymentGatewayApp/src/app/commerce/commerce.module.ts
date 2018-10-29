@@ -5,6 +5,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommerceRoutingModule } from './commerce-routing.module';
 import { MaterialModule } from '../material/material.module';
 
+import {
+    MatPaginatorModule
+} from '@angular/material';
+
 import { ListCommerceComponent } from './list-commerce/list-commerce.component';
 import { NewCommerceComponent } from './new-commerce/new-commerce.component';
 
@@ -14,7 +18,8 @@ import { NewCommerceComponent } from './new-commerce/new-commerce.component';
         CommerceRoutingModule,
         MaterialModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        MatPaginatorModule
     ],
     declarations: [
         ListCommerceComponent,

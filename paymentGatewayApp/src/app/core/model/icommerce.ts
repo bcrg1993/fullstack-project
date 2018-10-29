@@ -1,6 +1,6 @@
 export interface ICommerce {
-    name: string;
-    address: string;
-    phone: string;
-    state: boolean;
+    userId: number;
+    id: number;
+    title: string;
+    body: string;
 }

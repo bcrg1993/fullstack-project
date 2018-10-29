@@ -1,31 +1,35 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 import { ICommerce } from '../model/icommerce';
-import { delay } from "rxjs/operators";
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
     providedIn: 'root'
 })
 export class CommerceService {
 
-    private commerceList: ICommerce[];
+    dataChange: BehaviorSubject<ICommerce[]>;
+    totalRecords: number;
 
-    constructor() {
-        this.commerceList = [
-            { name: 'Empresa Gloria S.A.C', address: 'Casimiro Ulloa 111, Lima 15047', phone: '543-9999', state: true },
-            { name: 'Corporación Overal', address: 'Casimiro Ulloa 222, Lima 15047', phone: '543-8888', state: true },
-            { name: 'Empresa Equifax', address: 'Casimiro Ulloa 333, Lima 15047', phone: '543-7777', state: true },
-            { name: 'Alignet S.A.C', address: 'Casimiro Ulloa 444, Lima 15047', phone: '543-6666', state: true }
-        ];
+    constructor(private _httpClient: HttpClient) {
+        this.dataChange = new BehaviorSubject<ICommerce[]>([]);
     }
 
-    getCommerces(): Observable<ICommerce[]> {
-        return of(this.commerceList)
-            .pipe(delay(3000));
+    get data(): ICommerce[] {
+        return this.dataChange.value;
     }
 
-    addCommerces(commerce: ICommerce): void {
-        this.commerceList.push(commerce);
+    getAllCommerces(): void {
+        this._httpClient.get<ICommerce[]>(`${environment.API_URL}/posts`).subscribe(
+            data => {
+                this.dataChange.next(data);
+                this.totalRecords = data.length;
+            },
+            (error: HttpErrorResponse) => {
+                console.log(error.name + ' ' + error.message);
+            }
+        );
     }
 }

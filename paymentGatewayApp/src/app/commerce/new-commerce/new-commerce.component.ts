@@ -35,9 +35,6 @@ export class NewCommerceComponent implements OnInit {
     }
 
     addCommerce(): void {
-        let commerce: ICommerce = Object.assign({}, this.commerceForm.getRawValue());
-        this.commerceService.addCommerces(commerce);
-        this.router.navigate(['/', 'commerce']);
     }
 
     cancel(): void {
