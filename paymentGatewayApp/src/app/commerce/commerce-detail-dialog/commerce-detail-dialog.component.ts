@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material';
+import { ICommerce } from '../../core/model/ecommerce/icommerce';
 
 @Component({
   selector: 'app-commerce-detail-dialog',
@@ -7,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CommerceDetailDialogComponent implements OnInit {
 
-  constructor() { }
+  constructor(@Inject(MAT_DIALOG_DATA) public commerce: ICommerce) { }
 
   ngOnInit() {
+    console.log(JSON.stringify(this.commerce));
   }
 
 }

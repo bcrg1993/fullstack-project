@@ -10,24 +10,10 @@ import { environment } from 'src/environments/environment';
 })
 export class CommerceService {
 
-    commercesList$: BehaviorSubject<ICommerce[]>;
-
     constructor(private _httpClient: HttpClient) {
-        this.commercesList$ = new BehaviorSubject<ICommerce[]>([]);
     }
 
-    get commercesList(): ICommerce[] {
-        return this.commercesList$.value;
-    }
-
-    getAllCommerces(): void {
-        this._httpClient.get<ICommerce[]>(`${environment.API_URL}/users`).subscribe(
-            (data: ICommerce[]) => {
-                this.commercesList$.next(data);
-            },
-            (error: HttpErrorResponse) => {
-                console.log(error.name + ' ' + error.message);
-            }
-        );
+    getAllCommerces(): Observable<ICommerce[]> {
+        return this._httpClient.get<ICommerce[]>(`${environment.API_URL}/users`);
     }
 }

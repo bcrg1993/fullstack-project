@@ -1,10 +1,11 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { MatPaginator, MatDialog } from '@angular/material';
-import { CommerceService } from '../../core/service/commerce.service';
 import { CommerceListDataSource } from '../../core/model/ecommerce/commerce-list-datasource';
 import { CommerceDetailDialogComponent } from '../commerce-detail-dialog/commerce-detail-dialog.component';
+import { ICommerce } from '../../core/model/ecommerce/icommerce';
+import { CommerceRemoveDialogComponent } from '../commerce-remove-dialog/commerce-remove-dialog.component';
 
 @Component({
     selector: 'app-list-commerce',
@@ -21,7 +22,7 @@ export class ListCommerceComponent implements OnInit {
 
     constructor(private _router: Router,
         private dialog: MatDialog,
-        private _commerceService: CommerceService) {
+        private _activatedRoute: ActivatedRoute) {
     }
 
     ngOnInit() {
@@ -29,12 +30,12 @@ export class ListCommerceComponent implements OnInit {
     }
 
     getAllCommerces(): void {
-        this.dataSource = new CommerceListDataSource(this.paginator, this._commerceService);
+        this.dataSource = new CommerceListDataSource(this.paginator, this._activatedRoute.snapshot.data['commercesList']);
     }
 
     openCommerceDetailDialog(): void {
         const dialogRef = this.dialog.open(CommerceDetailDialogComponent, {
-            width: '250px'
+            width: '80em'
         });
 
         dialogRef.afterClosed().subscribe(result => {
@@ -42,9 +43,10 @@ export class ListCommerceComponent implements OnInit {
         });
     }
 
-    openCommerceRemoveDialog(): void {
-        const dialogRef = this.dialog.open(CommerceDetailDialogComponent, {
-            width: '250px'
+    openCommerceRemoveDialog(commerceRow: ICommerce): void {
+        const dialogRef = this.dialog.open(CommerceRemoveDialogComponent, {
+            width: '30em',
+            data: { commerce: commerceRow }
         });
 
         dialogRef.afterClosed().subscribe(result => {

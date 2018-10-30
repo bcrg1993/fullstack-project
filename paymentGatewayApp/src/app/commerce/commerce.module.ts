@@ -6,12 +6,13 @@ import { CommerceRoutingModule } from './commerce-routing.module';
 import { MaterialModule } from '../material/material.module';
 
 import {
-    MatPaginatorModule
+    MatPaginatorModule, MAT_DIALOG_DEFAULT_OPTIONS
 } from '@angular/material';
 
 import { ListCommerceComponent } from './list-commerce/list-commerce.component';
 import { NewCommerceComponent } from './new-commerce/new-commerce.component';
 import { CommerceDetailDialogComponent } from './commerce-detail-dialog/commerce-detail-dialog.component';
+import { CommerceRemoveDialogComponent } from './commerce-remove-dialog/commerce-remove-dialog.component';
 
 @NgModule({
     imports: [
@@ -25,7 +26,8 @@ import { CommerceDetailDialogComponent } from './commerce-detail-dialog/commerce
     declarations: [
         ListCommerceComponent,
         NewCommerceComponent,
-        CommerceDetailDialogComponent
+        CommerceDetailDialogComponent,
+        CommerceRemoveDialogComponent
     ],
     exports: [
         MaterialModule,
@@ -36,7 +38,14 @@ import { CommerceDetailDialogComponent } from './commerce-detail-dialog/commerce
         CUSTOM_ELEMENTS_SCHEMA
     ],
     entryComponents: [
-        CommerceDetailDialogComponent
+        CommerceDetailDialogComponent,
+        CommerceRemoveDialogComponent
+    ],
+    providers: [
+        {
+            provide: MAT_DIALOG_DEFAULT_OPTIONS,
+            useValue: { hasBackdrop: true }
+        }
     ]
 })
 export class CommerceModule { }
