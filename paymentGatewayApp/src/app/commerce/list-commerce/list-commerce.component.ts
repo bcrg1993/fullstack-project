@@ -1,10 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
-import { ICommerce } from '../../core/model/icommerce';
-import { CommerceService } from 'src/app/core/service/commerce.service';
-import { MatPaginator } from '@angular/material';
-import { CommerceListDataSource } from 'src/app/core/model/commerce-list-datasource';
+import { MatPaginator, MatDialog } from '@angular/material';
+import { CommerceService } from '../../core/service/commerce.service';
+import { CommerceListDataSource } from '../../core/model/ecommerce/commerce-list-datasource';
+import { CommerceDetailDialogComponent } from '../commerce-detail-dialog/commerce-detail-dialog.component';
 
 @Component({
     selector: 'app-list-commerce',
@@ -13,13 +13,14 @@ import { CommerceListDataSource } from 'src/app/core/model/commerce-list-datasou
 })
 export class ListCommerceComponent implements OnInit {
 
-    displayedColumns: string[] = ['id', 'title', 'body', 'actions'];
+    displayedColumns: string[] = ['id', 'name', 'username', 'email', 'company', 'actions'];
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
 
     dataSource: CommerceListDataSource;
 
     constructor(private _router: Router,
+        private dialog: MatDialog,
         private _commerceService: CommerceService) {
     }
 
@@ -28,7 +29,27 @@ export class ListCommerceComponent implements OnInit {
     }
 
     getAllCommerces(): void {
-        this.dataSource = new CommerceListDataSource(this._commerceService, this.paginator);
+        this.dataSource = new CommerceListDataSource(this.paginator, this._commerceService);
+    }
+
+    openCommerceDetailDialog(): void {
+        const dialogRef = this.dialog.open(CommerceDetailDialogComponent, {
+            width: '250px'
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            console.log('The dialog was closed');
+        });
+    }
+
+    openCommerceRemoveDialog(): void {
+        const dialogRef = this.dialog.open(CommerceDetailDialogComponent, {
+            width: '250px'
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            console.log('The dialog was closed');
+        });
     }
 
     goToAddCommerce(): void {

@@ -11,6 +11,7 @@ import {
 
 import { ListCommerceComponent } from './list-commerce/list-commerce.component';
 import { NewCommerceComponent } from './new-commerce/new-commerce.component';
+import { CommerceDetailDialogComponent } from './commerce-detail-dialog/commerce-detail-dialog.component';
 
 @NgModule({
     imports: [
@@ -23,7 +24,8 @@ import { NewCommerceComponent } from './new-commerce/new-commerce.component';
     ],
     declarations: [
         ListCommerceComponent,
-        NewCommerceComponent
+        NewCommerceComponent,
+        CommerceDetailDialogComponent
     ],
     exports: [
         MaterialModule,
@@ -32,6 +34,9 @@ import { NewCommerceComponent } from './new-commerce/new-commerce.component';
     ],
     schemas: [
         CUSTOM_ELEMENTS_SCHEMA
+    ],
+    entryComponents: [
+        CommerceDetailDialogComponent
     ]
 })
 export class CommerceModule { }

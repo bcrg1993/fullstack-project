@@ -1,9 +1,6 @@
-.mat-button-ripple {
-    width: 30px;
-    height: auto;
-    padding: 0;
-}
-
-table mat-icon {
-    padding: 0;
+table {
+    .mat-row {
+        height: 53px;
+        cursor: pointer;
+    }
 }

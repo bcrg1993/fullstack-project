@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 
-import { ICommerce } from '../model/icommerce';
+import { ICommerce } from '../model/ecommerce/icommerce';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
@@ -10,22 +10,20 @@ import { environment } from 'src/environments/environment';
 })
 export class CommerceService {
 
-    dataChange: BehaviorSubject<ICommerce[]>;
-    totalRecords: number;
+    commercesList$: BehaviorSubject<ICommerce[]>;
 
     constructor(private _httpClient: HttpClient) {
-        this.dataChange = new BehaviorSubject<ICommerce[]>([]);
+        this.commercesList$ = new BehaviorSubject<ICommerce[]>([]);
     }
 
-    get data(): ICommerce[] {
-        return this.dataChange.value;
+    get commercesList(): ICommerce[] {
+        return this.commercesList$.value;
     }
 
     getAllCommerces(): void {
-        this._httpClient.get<ICommerce[]>(`${environment.API_URL}/posts`).subscribe(
-            data => {
-                this.dataChange.next(data);
-                this.totalRecords = data.length;
+        this._httpClient.get<ICommerce[]>(`${environment.API_URL}/users`).subscribe(
+            (data: ICommerce[]) => {
+                this.commercesList$.next(data);
             },
             (error: HttpErrorResponse) => {
                 console.log(error.name + ' ' + error.message);
