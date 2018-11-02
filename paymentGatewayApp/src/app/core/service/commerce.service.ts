@@ -16,4 +16,8 @@ export class CommerceService {
     getAllCommerces(): Observable<ICommerce[]> {
         return this._httpClient.get<ICommerce[]>(`${environment.API_URL}/users`);
     }
+
+    getCommerce(commerceId: number): Observable<ICommerce> {
+        return this._httpClient.get<ICommerce>(`${environment.API_URL}/users/${commerceId}`);
+    }
 }

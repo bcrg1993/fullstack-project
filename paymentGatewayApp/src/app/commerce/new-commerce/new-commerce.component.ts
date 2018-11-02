@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { CommerceService } from '../../core/service/commerce.service';
-import { ICommerce } from '../../core/model/ecommerce/icommerce';
 
 @Component({
     selector: 'app-new-commerce',

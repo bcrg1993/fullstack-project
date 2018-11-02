@@ -3,7 +3,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import { MatPaginator, MatDialog } from '@angular/material';
 import { CommerceListDataSource } from '../../core/model/ecommerce/commerce-list-datasource';
-import { CommerceDetailDialogComponent } from '../commerce-detail-dialog/commerce-detail-dialog.component';
 import { ICommerce } from '../../core/model/ecommerce/icommerce';
 import { CommerceRemoveDialogComponent } from '../commerce-remove-dialog/commerce-remove-dialog.component';
 
@@ -15,10 +14,9 @@ import { CommerceRemoveDialogComponent } from '../commerce-remove-dialog/commerc
 export class ListCommerceComponent implements OnInit {
 
     displayedColumns: string[] = ['id', 'name', 'username', 'email', 'company', 'actions'];
+    dataSource: CommerceListDataSource;
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
-
-    dataSource: CommerceListDataSource;
 
     constructor(private _router: Router,
         private dialog: MatDialog,
@@ -33,14 +31,8 @@ export class ListCommerceComponent implements OnInit {
         this.dataSource = new CommerceListDataSource(this.paginator, this._activatedRoute.snapshot.data['commercesList']);
     }
 
-    openCommerceDetailDialog(): void {
-        const dialogRef = this.dialog.open(CommerceDetailDialogComponent, {
-            width: '80em'
-        });
-
-        dialogRef.afterClosed().subscribe(result => {
-            console.log('The dialog was closed');
-        });
+    goToUpdateCommerce(commerce: ICommerce): void {
+        this._router.navigate(['/commerce', 'update', commerce.id]);
     }
 
     openCommerceRemoveDialog(commerceRow: ICommerce): void {
@@ -50,7 +42,6 @@ export class ListCommerceComponent implements OnInit {
         });
 
         dialogRef.afterClosed().subscribe(result => {
-            console.log('The dialog was closed');
         });
     }
 
