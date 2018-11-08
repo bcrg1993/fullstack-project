@@ -1,8 +1,9 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { LoginRoutingModule } from './login-routing.module';
-import { SharedModule } from '../shared/shared.module';
+import { MaterialModule } from '../material/material.module';
 
 import { LoginComponent } from './login/login.component';
 
@@ -10,7 +11,14 @@ import { LoginComponent } from './login/login.component';
     imports: [
         CommonModule,
         LoginRoutingModule,
-        SharedModule
+        MaterialModule,
+        FormsModule,
+        ReactiveFormsModule
+    ],
+    exports: [
+        MaterialModule,
+        FormsModule,
+        ReactiveFormsModule
     ],
     declarations: [
         LoginComponent

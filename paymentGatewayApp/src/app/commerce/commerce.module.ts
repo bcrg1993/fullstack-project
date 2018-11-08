@@ -1,9 +1,9 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { CommerceRoutingModule } from './commerce-routing.module';
 import { MaterialModule } from '../material/material.module';
-
 import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material';
 import { ListCommerceComponent } from './list-commerce/list-commerce.component';
 import { NewCommerceComponent } from './new-commerce/new-commerce.component';
@@ -14,9 +14,9 @@ import { UpdateCommerceComponent } from './update-commerce/update-commerce.compo
     imports: [
         CommonModule,
         CommerceRoutingModule,
-        MaterialModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        MaterialModule
     ],
     declarations: [
         ListCommerceComponent,
@@ -25,9 +25,9 @@ import { UpdateCommerceComponent } from './update-commerce/update-commerce.compo
         UpdateCommerceComponent
     ],
     exports: [
-        MaterialModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        MaterialModule
     ],
     schemas: [
         CUSTOM_ELEMENTS_SCHEMA

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { CommerceService } from '../../core/service/commerce.service';
 
 @Component({
     selector: 'app-new-commerce',
@@ -13,7 +12,7 @@ export class NewCommerceComponent implements OnInit {
     commerceForm: FormGroup;
 
     constructor(private formBuilder: FormBuilder,
-        private router: Router, private commerceService: CommerceService) {
+        private router: Router) {
         this.commerceForm = this.formBuilder.group({
             name: ['', Validators.required],
             address: ['', Validators.required],

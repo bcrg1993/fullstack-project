@@ -2,7 +2,7 @@
     <img src="/assets/img/payment-gateway.png" alt="payment-gateway">
     <span>Pasarela de Pagos</span>
     <h1 class="toolbar-spacer"></h1>
-    <button mat-button [matMenuTriggerFor]="menu">
+    <button mat-button [matMenuTriggerFor]="menu" *ngIf="validateUserAccess()">
         <mat-icon>account_circle </mat-icon> Usuario
     </button>
     <mat-menu #menu="matMenu" class="user-menu-options">

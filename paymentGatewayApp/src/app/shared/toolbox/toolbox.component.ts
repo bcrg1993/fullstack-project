@@ -16,14 +16,19 @@ export class ToolboxComponent implements OnInit {
 
   ngOnInit() {
     this.router.events.forEach((event) => {
-      if(event instanceof NavigationStart) {
+      if (event instanceof NavigationStart) {
         this.progressBarShow = true;
       }
 
-      if(event instanceof NavigationEnd) {
+      if (event instanceof NavigationEnd) {
         this.progressBarShow = false;
       }
     });
+  }
+
+  validateUserAccess(): boolean {
+    const userData = localStorage.getItem('userData');
+    return userData == null ? false : true;
   }
 
 }
