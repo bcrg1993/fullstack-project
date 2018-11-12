@@ -7,7 +7,7 @@ import { CommerceService } from '../service/commerce.service';
 @Injectable({
   providedIn: 'root'
 })
-export class CommercesListResolver implements Resolve<Observable<ICommerce[]>> {
+export class CommercesListResolve implements Resolve<Observable<ICommerce[]>> {
 
   constructor(private _commerceService: CommerceService) { }
 

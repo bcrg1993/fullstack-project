@@ -14,10 +14,10 @@ export class CommerceService {
     }
 
     getAllCommerces(): Observable<ICommerce[]> {
-        return this._httpClient.get<ICommerce[]>(`${environment.API_URL}/users`);
+        return this._httpClient.get<ICommerce[]>(`${environment.API_URL}/commerce`);
     }
 
     getCommerce(commerceId: number): Observable<ICommerce> {
-        return this._httpClient.get<ICommerce>(`${environment.API_URL}/users/${commerceId}`);
+        return this._httpClient.get<ICommerce>(`${environment.API_URL}/commerce/${commerceId}`);
     }
 }

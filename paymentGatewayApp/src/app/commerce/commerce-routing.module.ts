@@ -3,14 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { ListCommerceComponent } from './list-commerce/list-commerce.component';
 import { NewCommerceComponent } from './new-commerce/new-commerce.component';
-import { CommercesListResolver } from '../core/resolver/commerces-list.resolver';
+import { CommercesListResolve } from '../core/resolve/commerces-list.resolve';
 import { UpdateCommerceComponent } from './update-commerce/update-commerce.component';
-import { CommerceDetailResolver } from '../core/resolver/commerce-detail.resolver';
+import { CommerceDetailResolve } from '../core/resolve/commerce-detail.resolve';
 
 const routes: Routes = [
-    { path: '', component: ListCommerceComponent, resolve: { commercesList: CommercesListResolver } },
+    { path: '', component: ListCommerceComponent, resolve: { commercesList: CommercesListResolve } },
     { path: 'create', component: NewCommerceComponent },
-    { path: 'update/:id', component: UpdateCommerceComponent, resolve: { commerce: CommerceDetailResolver } }
+    { path: 'update/:id', component: UpdateCommerceComponent, resolve: { commerce: CommerceDetailResolve } }
 ];
 
 @NgModule({

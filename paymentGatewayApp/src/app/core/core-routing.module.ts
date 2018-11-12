@@ -8,8 +8,9 @@ const routes: Routes = [
     { path: 'login', loadChildren: '../login/login.module#LoginModule' },
     {
         path: '', component: AdminLayoutComponent, children: [
+            { path: 'home', loadChildren: '../home/home.module#HomeModule' },
             { path: 'commerce', loadChildren: '../commerce/commerce.module#CommerceModule' },
-            { path: 'home', loadChildren: '../home/home.module#HomeModule' }
+            { path: 'country', loadChildren: '../country/country.module#CountryModule' },
         ]
     }
 ];

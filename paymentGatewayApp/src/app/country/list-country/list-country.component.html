@@ -1,0 +1,29 @@
+<button mat-button mat-raised-button color="accent" (click)="goToAddCountry()">
+  <mat-icon>add</mat-icon> Nuevo
+</button>
+
+<mat-paginator #paginator [length]="dataSource.countriesList.length" [pageIndex]="0" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 50]">
+</mat-paginator>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="width: 100%; text-align: center;">
+  <ng-container matColumnDef="_id">
+    <th mat-header-cell *matHeaderCellDef style="text-align:center;">Nro.</th>
+    <td mat-cell *matCellDef="let country">{{country._id}}</td>
+  </ng-container>
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef style="text-align:center;">Nombre</th>
+    <td mat-cell *matCellDef="let country">{{country.name}}</td>
+  </ng-container>
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef style="text-align:center;">Acciones</th>
+    <td mat-cell *matCellDef="let country">
+      <button mat-icon-button color="accent">
+        <mat-icon>delete</mat-icon>
+      </button>
+      <button mat-icon-button color="accent">
+        <mat-icon>info</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

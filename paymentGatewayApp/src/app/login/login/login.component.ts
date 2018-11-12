@@ -31,8 +31,10 @@ export class LoginComponent implements OnInit {
     }
 
     login(): void {
-        this.loginData = this.loginForm.getRawValue();
-        this.router.navigate(['home']);
+        if(this.validateForm()) {
+            this.loginData = this.loginForm.getRawValue();
+            this.router.navigate(['home']);
+        }
     }
 
     changeInputPasswordType(): void {
