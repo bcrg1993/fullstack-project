@@ -1,10 +1,10 @@
 {
- "watch": [
-  "server.ts",
-  "api",
-  "bin",
-  "route"
- ],
- "ext": "ts",
- "exec": "ts-node server"
+    "watch": [
+        "server.ts",
+        "main.ts",
+        "api",
+        "route"
+    ],
+    "ext": "ts",
+    "exec": "ts-node server"
 }

@@ -9,7 +9,7 @@ _DOTENV.config({ path: "./variables.env" });
 //Configuring mongoose
 _mongoose.Promise = global.Promise;
 _mongoose.connect(process.env.DATABASE, { useNewUrlParser: true });
-_mongoose.connection.on("connected", () => console.log("Connecting to MongoDB"));
+_mongoose.connection.on("connected", () => console.log("Connected to MongoDB"));
 _mongoose.connection.on("error", error => console.log(error));
 
 //Configuring Http Server
