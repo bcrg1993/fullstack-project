@@ -7,7 +7,7 @@ const routes: Routes = [
     { path: '', redirectTo: '/login', pathMatch: 'full' },
     { path: 'login', loadChildren: '../login/login.module#LoginModule' },
     {
-        path: '', component: AdminLayoutComponent, children: [
+        path: '', component: AdminLayoutComponent, runGuardsAndResolvers: 'always', children: [
             { path: 'home', loadChildren: '../home/home.module#HomeModule' },
             { path: 'commerce', loadChildren: '../commerce/commerce.module#CommerceModule' },
             { path: 'country', loadChildren: '../country/country.module#CountryModule' },
@@ -16,7 +16,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload' })],
+    imports: [RouterModule.forRoot(routes, { onSameUrlNavigation: 'ignore' })],
     exports: [RouterModule]
 })
 export class CoreRoutingModule {

@@ -1,0 +1,8 @@
+<div class="dialog-container">
+  <h2 mat-dialog-title>Eliminación de comercio</h2>
+  <p>¿Está seguro que desea eliminar el país <strong>{{_dataDialog.country.name}}</strong>?</p>
+  <mat-dialog-actions>
+    <button mat-raised-button mat-dialog-close color="accent">Cancelar</button>
+    <button mat-raised-button color="primary" (click)="removeCountry()">Aceptar</button>
+  </mat-dialog-actions>
+</div>

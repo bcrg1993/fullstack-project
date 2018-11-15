@@ -4,10 +4,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { CountryRoutingModule } from './country-routing.module';
 import { MaterialModule } from '../material/material.module';
-
+import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material';
 import { ListCountryComponent } from './list-country/list-country.component';
 import { NewCountryComponent } from './new-country/new-country.component';
 import { UpdateCountryComponent } from './update-country/update-country.component';
+import { CountryRemoveDialogComponent } from './country-remove-dialog/country-remove-dialog.component';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { UpdateCountryComponent } from './update-country/update-country.componen
   declarations: [
     ListCountryComponent,
     NewCountryComponent,
-    UpdateCountryComponent
+    UpdateCountryComponent,
+    CountryRemoveDialogComponent
   ],
   exports: [
     FormsModule,
@@ -30,6 +32,15 @@ import { UpdateCountryComponent } from './update-country/update-country.componen
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
+  ],
+  entryComponents: [
+    CountryRemoveDialogComponent
+  ],
+  providers: [
+    {
+      provide: MAT_DIALOG_DEFAULT_OPTIONS,
+      useValue: { hasBackdrop: true }
+    }
   ]
 })
 export class CountryModule { }

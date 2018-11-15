@@ -19,7 +19,7 @@ export class ListCommerceComponent implements OnInit {
     @ViewChild(MatPaginator) paginator: MatPaginator;
 
     constructor(private _router: Router,
-        private dialog: MatDialog,
+        private _dialog: MatDialog,
         private _activatedRoute: ActivatedRoute) {
     }
 
@@ -36,7 +36,7 @@ export class ListCommerceComponent implements OnInit {
     }
 
     openCommerceRemoveDialog(commerceRow: ICommerce): void {
-        const dialogRef = this.dialog.open(CommerceRemoveDialogComponent, {
+        const dialogRef = this._dialog.open(CommerceRemoveDialogComponent, {
             width: '30em',
             data: { commerce: commerceRow }
         });

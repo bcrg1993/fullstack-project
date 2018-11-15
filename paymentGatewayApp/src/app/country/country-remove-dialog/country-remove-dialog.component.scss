@@ -1,0 +1,10 @@
+.dialog-container {
+    font-family: 'Mukta';
+    .mat-dialog-actions {
+        padding-bottom: 20px;
+        flex-direction: row-reverse;
+        button {
+            margin-left: 20px;
+        }
+    }
+}
