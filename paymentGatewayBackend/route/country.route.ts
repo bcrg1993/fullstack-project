@@ -1,4 +1,4 @@
-import { CountryController } from "../controller/country.controller";
+import { CountryController } from "../api/controller/country.controller";
 import express = require("express");
 
 export class CountryRoute {

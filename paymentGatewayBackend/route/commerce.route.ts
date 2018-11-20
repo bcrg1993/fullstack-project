@@ -1,4 +1,4 @@
-import { CommerceController } from "../controller/commerce.controller";
+import { CommerceController } from "../api/controller/commerce.controller";
 import express = require("express");
 
 export class CommerceRoute {

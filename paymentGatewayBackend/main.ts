@@ -5,8 +5,9 @@ import cors = require("cors");
 import bodyParser = require("body-parser");
 
 import { Application } from "express";
-import { CountryRoute } from "./api/route/country.route";
-import { CommerceRoute } from './api/route/commerce.route';
+import { CountryRoute } from "./route/country.route";
+import { CommerceRoute } from './route/commerce.route';
+import { ExceptionHandler } from "./api/exception/exception.handler";
 
 //Configuring application environments
 const MainApp: Application = express();
@@ -22,8 +23,17 @@ MainApp.use(cors(corsConfig));
 MainApp.use(bodyParser.json());
 MainApp.use(bodyParser.urlencoded({ extended: true }));
 
+//Not Allowed Methods Middleware
+MainApp.use(new ExceptionHandler().notAllowedMethods);
+
 //Adding API routes
 MainApp.use('/country', new CountryRoute().routerPath);
-MainApp.use('/commerce', new CommerceRoute().routerPath)
+MainApp.use('/commerce', new CommerceRoute().routerPath);
 
-export default MainApp
+//Page not found Middleware
+MainApp.use(new ExceptionHandler().pageNotFound);
+
+//General Exception Middleware
+MainApp.use(new ExceptionHandler().generalException);
+
+export default MainApp;

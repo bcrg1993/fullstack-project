@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { ResponseModel } from "../model/response.model";
 
 export class GenericController {
     constructor(private model: any) {
@@ -10,7 +11,7 @@ export class GenericController {
     }
 
     async list(request: Request, response: Response) {
-        const list = await this.model.find();
+        const list = await this.model.find().sort({ name: 1 });
         response.json(list);
     }
 
@@ -18,7 +19,7 @@ export class GenericController {
         const params = request.body;
 
         await new this.model(params).save();
-        response.send("Model created");
+        response.send(new ResponseModel().successResponse);
     }
 
     async update(request: Request, response: Response) {
@@ -26,14 +27,14 @@ export class GenericController {
         const params = request.body;
 
         await this.model.findOneAndUpdate({ _id: ModelId }, params);
-        response.send("Model updated");
+        response.send(new ResponseModel().successResponse);
     }
 
     async delete(request: Request, response: Response) {
         const ModelId = request.params._id;
 
         await this.model.findOneAndRemove({ _id: ModelId });
-        response.send("Model deleted");
+        response.send(new ResponseModel().successResponse);
     }
 
     async detail(request: Request, response: Response) {
