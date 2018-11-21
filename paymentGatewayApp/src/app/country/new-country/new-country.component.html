@@ -1,3 +1,16 @@
-<p>
-  new-country works!
-</p>
+<mat-card id="form-receta-card">
+  <mat-card-title>Datos del país</mat-card-title>
+  <form [formGroup]="countryForm">
+    <div>
+      <mat-form-field appearance="legacy" class="form-group-50">
+        <mat-label>Nombre</mat-label>
+        <input type="text" matInput formControlName="name">
+        <mat-error *ngIf="validateInput('name')">El campo es requerido</mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <button type="button" mat-button mat-raised-button color="primary" [disabled]="!validateForm()" (click)="addCountry()">Grabar</button>
+      <button type="button" mat-button mat-raised-button color="accent" (click)="cancel()">Cancelar</button>
+    </div>
+  </form>
+</mat-card>

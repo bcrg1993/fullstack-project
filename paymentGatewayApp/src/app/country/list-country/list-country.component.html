@@ -2,12 +2,12 @@
   <mat-icon>add</mat-icon> Nuevo
 </button>
 
-<mat-paginator #paginator [length]="dataSource.countriesList.length" [pageIndex]="0" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 50]">
+<mat-paginator #paginator [length]="dataSource.countriesSubject.value?.length" [pageIndex]="0" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 50]">
 </mat-paginator>
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="width: 100%; text-align: center;">
   <ng-container matColumnDef="index">
     <th mat-header-cell *matHeaderCellDef style="text-align:center;">Nro.</th>
-    <td mat-cell *matCellDef="let country; let i = index; ">{{calculateRowIndex(i)}}</td>
+    <td mat-cell *matCellDef="let country; let i = index; ">{{calculateRowIndex(i + 1)}}</td>
   </ng-container>
   <ng-container matColumnDef="name">
     <th mat-header-cell *matHeaderCellDef style="text-align:center;">Nombre</th>

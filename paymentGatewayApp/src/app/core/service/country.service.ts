@@ -16,7 +16,19 @@ export class CountryService {
     return this._httpClient.get<ICountry[]>(`${environment.API_URL}/country`);
   }
 
-  removeCountry(countryId: number): Observable<any> {
-    return this._httpClient.delete<any>(`${environment.API_URL}/country/${countryId}`);
+  addCountry(country: ICountry): Observable<any> {
+    return this._httpClient.post(`${environment.API_URL}/country`, country);
+  }
+
+  updateCountry(country: ICountry): Observable<any> {
+    return this._httpClient.put(`${environment.API_URL}/country/${country._id}`, country);
+  }
+
+  getCountry(_id: string): Observable<ICountry> {
+    return this._httpClient.get<ICountry>(`${environment.API_URL}/country/${_id}`);
+  }
+
+  removeCountry(_id: string): Observable<any> {
+    return this._httpClient.delete<any>(`${environment.API_URL}/country/${_id}`);
   }
 }

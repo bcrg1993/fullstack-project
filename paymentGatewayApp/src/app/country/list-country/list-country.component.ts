@@ -1,9 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { MatPaginator, MatDialog } from '@angular/material';
 import { CountryListDataSource } from 'src/app/core/model/country/country-list-datasource';
 import { ICountry } from 'src/app/core/model/country/icountry';
 import { CountryRemoveDialogComponent } from '../country-remove-dialog/country-remove-dialog.component';
+import { CountryService } from '../../core/service/country.service';
 
 @Component({
   selector: 'app-list-country',
@@ -17,8 +18,8 @@ export class ListCountryComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private _activatedRoute: ActivatedRoute,
-    private _dialog: MatDialog,
+  constructor(private _dialog: MatDialog,
+    private _countryService: CountryService,
     private _router: Router) { }
 
   ngOnInit() {
@@ -26,7 +27,8 @@ export class ListCountryComponent implements OnInit {
   }
 
   getAllCountries(): void {
-    this.dataSource = new CountryListDataSource(this.paginator, this._activatedRoute.snapshot.data['countriesList']);
+    this.dataSource = new CountryListDataSource(this._countryService);
+    this.dataSource.loadCountries();
   }
 
   calculateRowIndex(index: number): number {
@@ -40,8 +42,12 @@ export class ListCountryComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this._router.navigate(['/country']);
+      this.dataSource.loadCountries();
     });
+  }
+
+  goToAddCountry(): void {
+    this._router.navigate(['/country', 'create']);
   }
 
 }

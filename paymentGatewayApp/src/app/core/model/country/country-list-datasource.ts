@@ -1,34 +1,37 @@
 import { ICountry } from "./icountry";
 import { DataSource } from '@angular/cdk/collections';
-import { Observable, merge, of } from "rxjs";
-import { map } from 'rxjs/Operators';
-import { MatPaginator } from "@angular/material";
+import { Observable, BehaviorSubject, of } from "rxjs";
+import { CountryService } from "../../service/country.service";
+import { catchError } from "rxjs/Operators";
 
-export class CountryListDataSource extends DataSource<ICountry> {
+export class CountryListDataSource implements DataSource<ICountry> {
 
-    countriesList: ICountry[];
-    renderedCountriesList: ICountry[];
+    private countriesSubject: BehaviorSubject<ICountry[]>;
 
-    constructor(private _paginator: MatPaginator, private _countriesList: ICountry[]) {
-        super();
-        this.countriesList = [];
+    constructor(private _countryService: CountryService) {
+        this.countriesSubject = new BehaviorSubject<ICountry[]>([]);
     }
 
     connect(): Observable<ICountry[]> {
-        const displayDataChanges = [
-            of(this._countriesList),
-            this._paginator.page
-        ];
-
-        return merge(...displayDataChanges).pipe(map(() => {
-            const startIndex = this._paginator.pageIndex * this._paginator.pageSize;
-            this.countriesList = this._countriesList;
-            this.renderedCountriesList = this.countriesList.slice(startIndex, startIndex + this._paginator.pageSize);
-            return this.renderedCountriesList;
-        }));
+        return this.countriesSubject.asObservable();
     }
 
     disconnect(): void {
+        this.countriesSubject.complete();
     }
+
+    loadCountries(): void {
+        this._countryService.getAllCountries()
+            .pipe(
+                catchError(() => of([]))
+            ).subscribe(countries => {
+                this.countriesSubject.next(countries);
+            });
+    }
+
+
+
+
+
 
 }

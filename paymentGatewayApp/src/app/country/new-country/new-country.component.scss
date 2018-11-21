@@ -1,0 +1,17 @@
+form {
+    div {
+        padding: 10px;
+        position: relative;
+        .form-group-50 {
+            width: 48%;
+        }
+        
+        .form-group-100 {
+            width: 100%;
+        }
+
+        button {
+            margin: 10px;
+        }
+    }
+}
