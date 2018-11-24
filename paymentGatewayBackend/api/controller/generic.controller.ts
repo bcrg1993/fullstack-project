@@ -23,24 +23,24 @@ export class GenericController {
     }
 
     async update(request: Request, response: Response) {
-        const ModelId = request.params._id;
+        const modelId = request.params._id;
         const params = request.body;
 
-        await this.model.findOneAndUpdate({ _id: ModelId }, params);
+        await this.model.findOneAndUpdate({ _id: modelId }, params);
         response.send(new ResponseModel().successResponse);
     }
 
     async delete(request: Request, response: Response) {
-        const ModelId = request.params._id;
+        const modelId = request.params._id;
 
-        await this.model.findOneAndRemove({ _id: ModelId });
+        await this.model.findOneAndRemove({ _id: modelId });
         response.send(new ResponseModel().successResponse);
     }
 
     async detail(request: Request, response: Response) {
-        const ModelId = request.params._id;
+        const modelId = request.params._id;
 
-        const modelData = await this.model.findOne({ _id: ModelId });
+        const modelData = await this.model.findOne({ _id: modelId });
         response.json(modelData);
     }
 }
