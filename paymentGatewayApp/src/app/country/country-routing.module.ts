@@ -4,11 +4,12 @@ import { ListCountryComponent } from './list-country/list-country.component';
 import { NewCountryComponent } from './new-country/new-country.component';
 import { UpdateCountryComponent } from './update-country/update-country.component';
 import { CountriesListResolve } from '../core/resolve/countries-list.resolve';
+import { CountryDetailResolve } from '../core/resolve/country-detail.resolve';
 
 const routes: Routes = [
     { path: '', component: ListCountryComponent, resolve: { countriesList: CountriesListResolve } },
     { path: 'create', component: NewCountryComponent },
-    { path: 'update/:id', component: UpdateCountryComponent }
+    { path: 'update/:id', component: UpdateCountryComponent, resolve: { country: CountryDetailResolve } }
 ];
 
 @NgModule({

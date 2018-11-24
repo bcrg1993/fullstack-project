@@ -1,38 +1,39 @@
-<button mat-button mat-raised-button color="accent" (click)="goToAddCommerce()">
+<button mat-button mat-raised-button color="accent" (click)="addCommerce()">
     <mat-icon>add</mat-icon> Nuevo
 </button>
-
-<mat-paginator #paginator [length]="dataSource.commercesList.length" [pageIndex]="0" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 50]">
-</mat-paginator>
+<br><br>
+<!--<mat-paginator #paginator [length]="dataSource.commercesSubject.value?.length" [pageIndex]="0" [pageSize]="10"
+    [pageSizeOptions]="[5, 10, 25, 50]">
+</mat-paginator>-->
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="width: 100%; text-align: center;">
-    <ng-container matColumnDef="id">
+    <ng-container matColumnDef="index">
         <th mat-header-cell *matHeaderCellDef style="text-align:center;">Nro.</th>
-        <td mat-cell *matCellDef="let commerce">{{commerce.id}}</td>
+        <td mat-cell *matCellDef="let commerce; let i = index;">{{i + 1}}</td>
     </ng-container>
     <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef style="text-align:center;">Nombre</th>
         <td mat-cell *matCellDef="let commerce">{{commerce.name}}</td>
     </ng-container>
-    <ng-container matColumnDef="username">
-        <th mat-header-cell *matHeaderCellDef style="text-align:center;">Usuario</th>
-        <td mat-cell *matCellDef="let commerce">{{commerce.username}}</td>
+    <ng-container matColumnDef="businessName">
+        <th mat-header-cell *matHeaderCellDef style="text-align:center;">Siglas</th>
+        <td mat-cell *matCellDef="let commerce">{{commerce.businessName}}</td>
     </ng-container>
-    <ng-container matColumnDef="email">
-        <th mat-header-cell *matHeaderCellDef style="text-align:center;">Email</th>
-        <td mat-cell *matCellDef="let commerce">{{commerce.email}}</td>
+    <ng-container matColumnDef="phone">
+        <th mat-header-cell *matHeaderCellDef style="text-align:center;">Teléfono</th>
+        <td mat-cell *matCellDef="let commerce">{{commerce.phone}}</td>
     </ng-container>
-    <ng-container matColumnDef="company">
-        <th mat-header-cell *matHeaderCellDef style="text-align:center;">Compañía</th>
-        <td mat-cell *matCellDef="let commerce">{{commerce.company.name}}</td>
+    <ng-container matColumnDef="address">
+        <th mat-header-cell *matHeaderCellDef style="text-align:center;">Dirección</th>
+        <td mat-cell *matCellDef="let commerce">{{commerce.address}}</td>
     </ng-container>
     <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef style="text-align:center;">Acciones</th>
         <td mat-cell *matCellDef="let commerce">
             <button mat-icon-button color="accent">
-                <mat-icon (click)="openCommerceRemoveDialog(commerce)">delete</mat-icon>
+                <mat-icon (click)="removeCommerce(commerce)">delete</mat-icon>
             </button>
             <button mat-icon-button color="accent">
-                <mat-icon (click)="goToUpdateCommerce(commerce)">info</mat-icon>
+                <mat-icon (click)="updateCommerce(commerce)">info</mat-icon>
             </button>
         </td>
     </ng-container>

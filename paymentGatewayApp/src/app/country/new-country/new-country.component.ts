@@ -42,4 +42,8 @@ export class NewCountryComponent implements OnInit {
     );
   }
 
+  cancel(): void {
+    this._router.navigate(['/country']);
+  }
+
 }

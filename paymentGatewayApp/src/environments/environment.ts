@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  //API_URL: 'https://jsonplaceholder.typicode.com'
-  API_URL: 'https://payment-gateway-back.herokuapp.com'
+  API_URL: 'http://localhost:3000'
+  //API_URL: 'https://payment-gateway-back.herokuapp.com'
 };
 
 /*

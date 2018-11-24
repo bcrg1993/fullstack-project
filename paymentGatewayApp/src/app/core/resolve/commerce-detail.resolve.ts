@@ -6,14 +6,14 @@ import { ICommerce } from '../model/ecommerce/icommerce';
 import { CommerceService } from '../service/commerce.service';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class CommerceDetailResolve implements Resolve<Observable<ICommerce>> {
 
-  constructor(private _commmerceService: CommerceService) { }
+    constructor(private _commmerceService: CommerceService) { }
 
-  resolve(_route: ActivatedRouteSnapshot): Observable<ICommerce> {
-    const commerceId = +_route.params.id;
-    return this._commmerceService.getCommerce(commerceId);
-  }
+    resolve(_route: ActivatedRouteSnapshot): Observable<ICommerce> {
+        const commerceId = _route.params.id;
+        return this._commmerceService.getCommerce(commerceId);
+    }
 }

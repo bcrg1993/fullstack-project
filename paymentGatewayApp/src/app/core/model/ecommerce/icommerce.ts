@@ -1,12 +1,12 @@
-import { IAddress } from "./iaddress";
-import { ICompany } from "./icompany";
+import { IRepresentative } from "./representative";
+import { ICountry } from "../country/icountry";
 
 export interface ICommerce {
-    id: number;
+    _id: number;
     name: string;
-    username: string;
-    address: IAddress;
+    businessName: string;
+    address: string;
     phone: string;
-    website: string;
-    company: ICompany
+    representative: IRepresentative;
+    country: ICountry;
 }

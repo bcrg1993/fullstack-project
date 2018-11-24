@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
 
 import { ICommerce } from '../model/ecommerce/icommerce';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -17,7 +17,15 @@ export class CommerceService {
         return this._httpClient.get<ICommerce[]>(`${environment.API_URL}/commerce`);
     }
 
-    getCommerce(commerceId: number): Observable<ICommerce> {
-        return this._httpClient.get<ICommerce>(`${environment.API_URL}/commerce/${commerceId}`);
+    addCommerce(commerce: ICommerce): Observable<any> {
+        return this._httpClient.post<any>(`${environment.API_URL}/commerce/`, commerce);
+    }
+
+    getCommerce(_id: string): Observable<ICommerce> {
+        return this._httpClient.get<ICommerce>(`${environment.API_URL}/commerce/${_id}`);
+    }
+
+    removeCommerce(_id: string): Observable<any> {
+        return this._httpClient.delete<any>(`${environment.API_URL}/commerce/${_id}`);
     }
 }

@@ -1,34 +1,32 @@
 import { ICommerce } from "./icommerce";
 import { DataSource } from '@angular/cdk/collections';
-import { Observable, merge, of } from "rxjs";
-import { map } from 'rxjs/Operators';
-import { MatPaginator } from "@angular/material";
+import { BehaviorSubject, Observable, of } from "rxjs";
+import { CommerceService } from "../../service/commerce.service";
+import { catchError } from "rxjs/Operators";
 
-export class CommerceListDataSource extends DataSource<ICommerce> {
+export class CommerceListDataSource implements DataSource<ICommerce> {
 
-    commercesList: ICommerce[];
-    renderedCommercesList: ICommerce[];
+    private commercesSubject: BehaviorSubject<ICommerce[]>;
 
-    constructor(private _paginator: MatPaginator, private _commercesList: ICommerce[]) {
-        super();
-        this.commercesList = [];
+    constructor(private _commerceService: CommerceService) {
+        this.commercesSubject = new BehaviorSubject<ICommerce[]>([]);
     }
 
     connect(): Observable<ICommerce[]> {
-        const displayDataChanges = [
-            of(this._commercesList),
-            this._paginator.page
-        ];
-
-        return merge(...displayDataChanges).pipe(map(() => {
-            const startIndex = this._paginator.pageIndex * this._paginator.pageSize;
-            this.commercesList = this._commercesList;
-            this.renderedCommercesList = this.commercesList.slice(startIndex, startIndex + this._paginator.pageSize);
-            return this.renderedCommercesList;
-        }));
+        return this.commercesSubject.asObservable();
     }
 
     disconnect(): void {
+        this.commercesSubject.complete();
+    }
+
+    loadCommerces(): void {
+        this._commerceService.getAllCommerces()
+            .pipe(
+                catchError(() => of([]))
+            ).subscribe(commerces => {
+                this.commercesSubject.next(commerces);
+            });
     }
 
 }
