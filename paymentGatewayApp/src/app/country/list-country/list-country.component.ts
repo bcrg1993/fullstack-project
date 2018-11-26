@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { MatPaginator, MatDialog } from '@angular/material';
 import { CountryListDataSource } from 'src/app/core/model/country/country-list-datasource';
 import { ICountry } from 'src/app/core/model/country/icountry';
@@ -20,6 +20,7 @@ export class ListCountryComponent implements OnInit {
     //@ViewChild(MatPaginator) paginator: MatPaginator;
 
     constructor(private _dialog: MatDialog,
+        private _activatedRoute: ActivatedRoute,
         private _countryService: CountryService,
         private _router: Router) { }
 
@@ -36,7 +37,7 @@ export class ListCountryComponent implements OnInit {
 
     getAllCountries(): void {
         this.dataSource = new CountryListDataSource(this._countryService);
-        this.dataSource.loadCountries();
+        this.dataSource.loadCountriesFromResolve(this._activatedRoute.snapshot.data['countriesList']);
     }
 
     /*calculateRowIndex(index: number): number {

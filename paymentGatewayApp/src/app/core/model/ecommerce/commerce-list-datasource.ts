@@ -29,4 +29,8 @@ export class CommerceListDataSource implements DataSource<ICommerce> {
             });
     }
 
+    loadCommercesFromResolve(commercesList: ICommerce[]): void {
+        this.commercesSubject.next(commercesList);
+    }
+
 }

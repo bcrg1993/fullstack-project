@@ -1,6 +1,9 @@
 <mat-card id="form-receta-card">
     <mat-card-title>Inicio de sesión</mat-card-title>
     <form autocomplete="off" [formGroup]="loginForm">
+        <div class="incorrect-data-message" *ngIf="incorrectDataMessageFlag">
+            <span>Los datos ingresados son incorrectos</span>
+        </div>
         <div class="form-input-100">
             <mat-form-field appearance="legacy">
                 <mat-label>Usuario</mat-label>

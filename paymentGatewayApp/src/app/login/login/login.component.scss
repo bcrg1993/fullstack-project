@@ -1,6 +1,15 @@
 mat-card {
     width: 350px;
     margin: 40px auto;
+    .incorrect-data-message {
+        text-align: center;
+        padding: 20px 0px;
+        span {
+            color: red;
+            font-size: 13px;
+            font-weight: bold;
+        }
+    }
 }
 
 .form-input-100 .mat-form-field {

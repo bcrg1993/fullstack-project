@@ -28,4 +28,8 @@ export class CountryListDataSource implements DataSource<ICountry> {
                 this.countriesSubject.next(countries);
             });
     }
+
+    loadCountriesFromResolve(countriesList: ICountry[]): void {
+        this.countriesSubject.next(countriesList);
+    }
 }

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ICommerce } from 'src/app/core/model/ecommerce/icommerce';
+import { ICountry } from 'src/app/core/model/country/icountry';
+import { CommerceService } from 'src/app/core/service/commerce.service';
 
 @Component({
     selector: 'app-update-commerce',
@@ -13,10 +14,14 @@ export class UpdateCommerceComponent implements OnInit {
 
     commerce: ICommerce;
     commerceForm: FormGroup;
+    countriesList: ICountry[];
 
     constructor(private _formBuilder: FormBuilder,
-        private _activatedRoute: ActivatedRoute) {
+        private _activatedRoute: ActivatedRoute,
+        private _commerceService: CommerceService,
+        private _router: Router) {
         this.commerceForm = this._formBuilder.group({
+            _id: ['', Validators.required],
             name: ['', Validators.required],
             businessName: ['', Validators.required],
             phone: ['', Validators.required],
@@ -31,8 +36,9 @@ export class UpdateCommerceComponent implements OnInit {
 
     ngOnInit() {
         this.commerce = this._activatedRoute.snapshot.data['commerce'];
-        console.log(JSON.stringify(this.commerce));
+        this.countriesList = this._activatedRoute.snapshot.data['countriesList'];
         this.commerceForm.setValue({
+            _id: this.commerce._id,
             name: this.commerce.name,
             businessName: this.commerce.businessName,
             address: this.commerce.address,
@@ -49,8 +55,29 @@ export class UpdateCommerceComponent implements OnInit {
         return this.commerceForm.controls[field].invalid;
     }
 
+    validateRepresentativeInput(field: string) {
+        this.commerceForm.controls.representative['controls'][field].invalid;
+    }
+
     validateForm(): boolean {
         return this.commerceForm.valid;
+    }
+
+    updateCommerce(): void {
+        this.commerce = this.commerceForm.getRawValue();
+        this._commerceService.updateCommerce(this.commerce)
+            .subscribe(
+                data => {
+                    this._router.navigate(['commerce']);
+                },
+                error => {
+                    console.log(error);
+                }
+            );
+    }
+
+    cancel(): void {
+        this._router.navigate(['commerce']);
     }
 
 }

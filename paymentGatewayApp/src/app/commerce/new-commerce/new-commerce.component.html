@@ -35,7 +35,7 @@
         <div>
             <mat-form-field appearance="legacy" class="form-group-100">
                 <mat-label>Dirección</mat-label>
-                <textarea type="text" matInput formControlName="address" rows="1"></textarea>
+                <input type="text" matInput formControlName="address" rows="1">
                 <mat-error *ngIf="validateInput('address')">El campo es requerido</mat-error>
             </mat-form-field>
         </div>
@@ -44,16 +44,16 @@
     <mat-card id="form-receta-card" formGroupName="representative">
         <mat-card-title>Datos del Representante</mat-card-title>
         <div>
-            <mat-form-field appearance="legacy" class="form-group-100">
+            <mat-form-field appearance="legacy" class="form-group-50">
                 <mat-label>Nombre</mat-label>
-                <textarea type="text" matInput formControlName="name" rows="1"></textarea>
+                <input type="text" matInput formControlName="name" rows="1">
                 <mat-error *ngIf="validateRepresentativeInput('name')">El campo es requerido</mat-error>
             </mat-form-field>
         </div>
         <div>
-            <mat-form-field appearance="legacy" class="form-group-100">
+            <mat-form-field appearance="legacy" class="form-group-50">
                 <mat-label>Teléfono</mat-label>
-                <textarea type="text" matInput formControlName="phone" rows="1"></textarea>
+                <input type="text" matInput formControlName="phone" rows="1">
                 <mat-error *ngIf="validateRepresentativeInput('phone')">El campo es requerido</mat-error>
             </mat-form-field>
         </div>

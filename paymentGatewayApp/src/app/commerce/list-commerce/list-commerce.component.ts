@@ -20,6 +20,7 @@ export class ListCommerceComponent implements OnInit {
     @ViewChild(MatPaginator) paginator: MatPaginator;
 
     constructor(private _router: Router,
+        private _activatedRoute: ActivatedRoute,
         private _dialog: MatDialog,
         private _commerceService: CommerceService) {
     }
@@ -30,7 +31,7 @@ export class ListCommerceComponent implements OnInit {
 
     getAllCommerces(): void {
         this.dataSource = new CommerceListDataSource(this._commerceService);
-        this.dataSource.loadCommerces();
+        this.dataSource.loadCommercesFromResolve(this._activatedRoute.snapshot.data['commercesList']);
     }
 
     addCommerce(): void {
@@ -51,7 +52,5 @@ export class ListCommerceComponent implements OnInit {
             this.dataSource.loadCommerces();
         });
     }
-
-
 
 }

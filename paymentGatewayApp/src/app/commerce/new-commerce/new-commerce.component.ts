@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { ICountry } from 'src/app/core/model/country/icountry';
-import { CountryService } from 'src/app/core/service/country.service';
 import { CommerceService } from 'src/app/core/service/commerce.service';
 
 @Component({
@@ -15,9 +14,7 @@ export class NewCommerceComponent implements OnInit {
     commerceForm: FormGroup;
     countriesList: ICountry[];
 
-    constructor(private _formBuilder: FormBuilder,
-        private _router: Router,
-        private _countryService: CountryService,
+    constructor(private _formBuilder: FormBuilder, private _router: Router, private _activatedRoute: ActivatedRoute,
         private _commerceService: CommerceService) {
         this.commerceForm = this._formBuilder.group({
             name: ['', Validators.required],
@@ -30,20 +27,10 @@ export class NewCommerceComponent implements OnInit {
                 phone: ['', Validators.required]
             })
         });
-        this.countriesList = [];
     }
 
     ngOnInit() {
-        this.loadCountries();
-    }
-
-    loadCountries(): void {
-        this._countryService.getAllCountries().subscribe(
-            data => {
-                this.countriesList = data;
-            },
-            error => console.log(error)
-        );
+        this.countriesList = this._activatedRoute.snapshot.data['countriesList'];
     }
 
     validateInput(field: string): boolean {

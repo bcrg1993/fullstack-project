@@ -2,11 +2,11 @@
     <img src="/assets/img/payment-gateway.png" alt="payment-gateway">
     <span>Pasarela de Pagos</span>
     <h1 class="toolbar-spacer"></h1>
-    <button mat-button [matMenuTriggerFor]="menu" *ngIf="validateUserAccess()">
-        <mat-icon>account_circle </mat-icon> Usuario
+    <button mat-button [matMenuTriggerFor]="menu" *ngIf="user?.username">
+        <mat-icon>account_circle </mat-icon> {{user.username}}
     </button>
     <mat-menu #menu="matMenu" class="user-menu-options">
-        <button mat-menu-item>Cerrar sesión</button>
+        <button mat-menu-item (click)="logout()">Cerrar sesión</button>
     </mat-menu>
 </mat-toolbar>
 <mat-progress-bar *ngIf="progressBarShow" mode="indeterminate" color="accent"></mat-progress-bar>

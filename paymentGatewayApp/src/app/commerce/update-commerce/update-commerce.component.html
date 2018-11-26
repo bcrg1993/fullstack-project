@@ -1,30 +1,65 @@
-<mat-card id="form-receta-card">
-  <mat-card-title>Datos del comercio</mat-card-title>
-  <form [formGroup]="commerceForm">
-    <div>
-      <mat-form-field appearance="legacy" class="form-group-50">
-        <mat-label>Nombre</mat-label>
-        <input type="text" matInput formControlName="name">
-        <mat-error *ngIf="validateInput('name')">El campo es requerido</mat-error>
-      </mat-form-field>
-    </div>
-    <div>
-      <mat-form-field appearance="legacy" class="form-group-50">
-        <mat-label>Teléfono</mat-label>
-        <input type="text" matInput formControlName="phone">
-        <mat-error *ngIf="validateInput('phone')">El campo es requerido</mat-error>
-      </mat-form-field>
-    </div>
-    <div>
-      <mat-form-field appearance="legacy" class="form-group-100">
-        <mat-label>Dirección</mat-label>
-        <textarea type="text" matInput formControlName="address" rows="1"></textarea>
-        <mat-error *ngIf="validateInput('address')">El campo es requerido</mat-error>
-      </mat-form-field>
-    </div>
-    <div>
-      <button type="button" mat-button mat-raised-button color="primary" [disabled]="!validateForm()" (click)="addCommerce()">Actualizar</button>
-      <button type="button" mat-button mat-raised-button color="accent" (click)="cancel()">Cancelar</button>
-    </div>
-  </form>
-</mat-card>
+<form [formGroup]="commerceForm">
+    <mat-card id="form-receta-card">
+        <mat-card-title>Datos del comercio</mat-card-title>
+        <div>
+            <mat-form-field appearance="legacy" class="form-group-50">
+                <mat-label>Nombre</mat-label>
+                <input type="text" matInput formControlName="name">
+                <mat-error *ngIf="validateInput('name')">El campo es requerido</mat-error>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="legacy" class="form-group-50">
+                <mat-label>Siglas</mat-label>
+                <input type="text" matInput formControlName="businessName">
+                <mat-error *ngIf="validateInput('businessName')">El campo es requerido</mat-error>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="legacy" class="form-group-50">
+                <mat-label>Teléfono</mat-label>
+                <input type="text" matInput formControlName="phone">
+                <mat-error *ngIf="validateInput('phone')">El campo es requerido</mat-error>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+                <mat-select placeholder="País" formControlName="country">
+                    <mat-option *ngFor="let country of countriesList" [value]="country._id">
+                        {{country.name}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="validateInput('phone')">El campo es requerido</mat-error>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="legacy" class="form-group-100">
+                <mat-label>Dirección</mat-label>
+                <input type="text" matInput formControlName="address" rows="1">
+                <mat-error *ngIf="validateInput('address')">El campo es requerido</mat-error>
+            </mat-form-field>
+        </div>
+    </mat-card>
+    <br><br>
+    <mat-card id="form-receta-card" formGroupName="representative">
+        <mat-card-title>Datos del Representante</mat-card-title>
+        <div>
+            <mat-form-field appearance="legacy" class="form-group-50">
+                <mat-label>Nombre</mat-label>
+                <input type="text" matInput formControlName="name" rows="1">
+                <mat-error *ngIf="validateRepresentativeInput('name')">El campo es requerido</mat-error>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="legacy" class="form-group-50">
+                <mat-label>Teléfono</mat-label>
+                <input type="text" matInput formControlName="phone" rows="1">
+                <mat-error *ngIf="validateRepresentativeInput('phone')">El campo es requerido</mat-error>
+            </mat-form-field>
+        </div>
+        <div>
+            <button type="button" mat-button mat-raised-button color="primary" [disabled]="!validateForm()" (click)="updateCommerce()">Actualizar</button>
+            <button type="button" mat-button mat-raised-button color="accent" (click)="cancel()">Cancelar</button>
+        </div>
+    </mat-card>
+</form>
