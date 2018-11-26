@@ -9,7 +9,9 @@ export class CommerceController extends GenericController {
     }
 
     async list(request: Request, response: Response) {
-        const list = await CommerceModel.find().populate('country').sort({ name: 1 });
+        const list = await CommerceModel.find()
+            .sort({ name: 1 })
+            .select({ name: 1, businessName: 1, phone: 1, address: 1 });
         response.json(list);
     }
 

@@ -8,6 +8,7 @@ import { Application } from "express";
 import { CountryRoute } from "./route/country.route";
 import { CommerceRoute } from './route/commerce.route';
 import { ExceptionHandler } from "./api/exception/exception.handler";
+import { UserRoute } from "./route/user.route";
 
 //Configuring application environments
 const MainApp: Application = express();
@@ -29,6 +30,7 @@ MainApp.use(new ExceptionHandler().notAllowedMethods);
 //Adding API routes
 MainApp.use('/country', new CountryRoute().routerPath);
 MainApp.use('/commerce', new CommerceRoute().routerPath);
+MainApp.use('/user', new UserRoute().routerPath);
 
 //Page not found Middleware
 MainApp.use(new ExceptionHandler().pageNotFound);
